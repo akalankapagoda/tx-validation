@@ -36,7 +36,7 @@ public class TransactionValidationExceptionHandler extends ResponseEntityExcepti
 
         String message;
 
-        if (HttpStatus.BAD_REQUEST == e.getHttpStatus()) {
+        if (HttpStatus.BAD_REQUEST == e.getHttpStatus() || HttpStatus.NOT_FOUND == e.getHttpStatus()) {
             message = e.getMessage();
         } else {
             message = "An error occurred. Please contact the system administrator!";

@@ -78,6 +78,7 @@ public class TransactionValidationController {
      * @return The validation results or status
      * @throws TransactionValidationException
      */
+    @GetMapping
     public ResponseMessage getValidationResults(@RequestParam("identifier") String identifier)
             throws TransactionValidationException {
 

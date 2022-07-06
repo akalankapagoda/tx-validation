@@ -49,6 +49,11 @@ public class TransactionValidationControllerTest {
         doNothing().when(mockStorageService).saveFile(TEST_IDENTIFIER, nonEmptyMultipartFile);
         doNothing().when(mockStorageService).saveValidationResults(testResults);
 
+        TransactionValidationResults results = new TransactionValidationResults(TEST_IDENTIFIER);
+        results.setStatus(ResponseStatus.SUBMITTED);
+
+        when(mockStorageService.readValidationResults(TEST_IDENTIFIER)).thenReturn(results);
+
         ResponseMessage response = transactionValidationController.validateTransactions(TEST_IDENTIFIER,
                 nonEmptyMultipartFile, "json");
 

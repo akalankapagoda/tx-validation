@@ -24,8 +24,8 @@ public class TransactionValidationService {
 
     private ExecutorService executorService = Executors.newFixedThreadPool(EXECUTOR_THREAD_POOL_SIZE);
 
-    private TransactionValidationProcessorFactory validationProcessorFactory
-            = new TransactionValidationProcessorFactory();
+    @Autowired
+    private TransactionValidationProcessorFactory validationProcessorFactory;
 
     @Autowired
     private StorageService storageService;
@@ -46,14 +46,15 @@ public class TransactionValidationService {
 
         FileType fileType = FileType.valueOf(type.toUpperCase());
 
-        TransactionValidationProcessor processor = validationProcessorFactory.getTransactionValidationProcessor(identifier, fileType);
-
-        executorService.submit(processor);
 
         TransactionValidationResults results = new TransactionValidationResults(identifier);
         results.setStatus(ResponseStatus.SUBMITTED);
 
         storageService.saveValidationResults(results);
+
+        TransactionValidationProcessor processor = validationProcessorFactory.getTransactionValidationProcessor(identifier, fileType);
+
+        executorService.submit(processor);
 
         return results;
 
