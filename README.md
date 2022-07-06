@@ -21,15 +21,13 @@ Hello! The validation service is up and running!
 - identifier - An identifier for the file
 
 #### Response
-`
     
     {
-    "status": "SUBMITTED",
-    "message": null,
-    "identifier": "<identifier provided in the request>",
-    "invalidRecords": []
+        "status": "SUBMITTED",
+        "message": null,
+        "identifier": "<identifier provided in the request>",
+        "invalidRecords": []
     }
-`
 
 ### GET /transaction/validation
 
@@ -39,7 +37,6 @@ Hello! The validation service is up and running!
 
 #### Response
 
-`
     
     {
         "status": "SUCCESS",
@@ -52,4 +49,4 @@ Hello! The validation service is up and running!
             },
             ....
         ]
-    }`
+    }
