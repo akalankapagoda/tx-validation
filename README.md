@@ -3,6 +3,7 @@
 Accepts a list of transactions as a CSV or a JSON and validates them.
 
 Transactions are validated according to the below rules
+
 - All transaction references should be unique
 - Per record the end balance needs to be correct given the start balance and mutation
 
