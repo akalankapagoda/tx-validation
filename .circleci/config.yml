@@ -26,10 +26,14 @@ jobs:
       - run:
           name: Test
           command: mvn test
+          
+      - run:
+          command: |
+            mkdir -p /tmp/jars
+            cp target/validation-*.jar /tmp/jars
 
       - store_artifacts:
-          path: /target/validation-*.jar
-          destination: jars
+          path: /tmp/jars
   
   echo:
     docker:
