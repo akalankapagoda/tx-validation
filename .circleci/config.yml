@@ -2,6 +2,9 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+orbs:
+  aws-code-deploy: circleci/aws-code-deploy@2.0.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -57,3 +60,12 @@ workflows:
   funny:
     jobs:
       - echo
+      
+  deploy_application:
+    jobs:
+      - aws-code-deploy/deploy:
+          application-name: tx-validation-deployment
+          bundle-bucket: arn:aws:s3:::tx-validation-artifact
+          bundle-key: validation-0.0.1-SNAPSHOT.jar
+          deployment-group: tx-validation-deployment-group
+          service-role-arn: test-instance-role
