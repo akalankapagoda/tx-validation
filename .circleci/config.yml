@@ -61,7 +61,7 @@ workflows:
     jobs:
       - aws-code-deploy/deploy:
           application-name: tx-validation-deployment
-          bundle-bucket: s3://arn:aws:s3:::tx-validation-artifact
+          bundle-bucket: arn:aws:s3:::tx-validation-artifact
           bundle-key: validation-0.0.1-SNAPSHOT
           bundle-type: jar
           deployment-group: tx-validation-deployment-group
