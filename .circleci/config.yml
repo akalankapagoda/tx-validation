@@ -47,7 +47,7 @@ workflows:
   create_image: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build_and_push_image
+      - build-and-test
 
   build_and_push_image:
     jobs:
@@ -61,7 +61,6 @@ workflows:
           public-registry: false
           push-image: true
           region: us-east-1
-          registry-id: 127634895679
           repo: tx-validation
           repo-scan-on-push: true
           role-arn: 'arn:aws:iam::123456789012:role/testing'
