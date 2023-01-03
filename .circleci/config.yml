@@ -78,7 +78,7 @@ workflows:
           checkout: false
       - aws-ecs/deploy-service-update:
           cluster: 'tx-validation-cluster'
-          container-image-name-updates: 'container=127634895679.dkr.ecr.us-east-1.amazonaws.com/tx-validation,tag=newtag'
+          container-image-name-updates: 'container=tx-validation-container,tag=newtag'
           family: 'tx-validation-container-task'
           requires:
             - aws-ecr/build-and-push-image
