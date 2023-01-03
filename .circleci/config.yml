@@ -41,6 +41,7 @@ jobs:
       - persist_to_workspace:
           root: ./
           paths:
+            - Dockerfile
             - target/*
   
 
@@ -71,5 +72,5 @@ workflows:
           checkout: false
           pre-steps:
             - attach_workspace:
-                at: ./target
+                at: ./
 
