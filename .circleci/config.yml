@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
+  aws-ecs: circleci/aws-ecs@3.2
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -75,4 +76,10 @@ workflows:
           skip-when-tags-exist: false
           tag: 'latest'
           checkout: false
+      - aws-ecs/deploy-service-update:
+          cluster: 'tx-validation-cluster'
+          container-image-name-updates: 'container=127634895679.dkr.ecr.us-east-1.amazonaws.com/tx-validation,tag=newtag'
+          family: 'tx-validation-container-task'
+          requires:
+            - aws-ecr/build-and-push-image
 
