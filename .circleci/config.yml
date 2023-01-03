@@ -72,5 +72,5 @@ workflows:
           checkout: false
           pre-steps:
             - attach_workspace:
-                at: ./
+                at: .
 
