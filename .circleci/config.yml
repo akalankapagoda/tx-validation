@@ -37,6 +37,14 @@ jobs:
 
       - store_artifacts:
           path: /tmp/jars
+
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: ./
+          # Must be relative path from root
+          paths:
+            - target/*
   
 
       
@@ -63,4 +71,7 @@ workflows:
           role-arn: 'arn:aws:iam::123456789012:role/testing'
           skip-when-tags-exist: false
           tag: 'latest'
+          pre-steps:
+            - attach_workspace:
+                at: ./
 
