@@ -55,6 +55,9 @@ workflows:
     jobs:
       - build-and-test
       - aws-ecr/build-and-push-image:
+          pre-steps:
+            - attach_workspace:
+                at: .
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-cli-version: latest
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
@@ -70,7 +73,4 @@ workflows:
           skip-when-tags-exist: false
           tag: 'latest'
           checkout: false
-          pre-steps:
-            - attach_workspace:
-                at: .
 
