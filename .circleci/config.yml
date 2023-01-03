@@ -80,6 +80,7 @@ workflows:
           cluster: 'tx-validation-cluster'
           container-image-name-updates: 'container=tx-validation-container,tag=newtag'
           family: 'tx-validation-container-task'
+          service-name: tx-validation-cluster-service
           requires:
             - aws-ecr/build-and-push-image
 
